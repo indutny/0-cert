@@ -67,7 +67,7 @@ function genCertData(cn, altname, pubkey) {
       },
       notAfter: {
         type: 'utcTime',
-        value: new Date(+new Date + 10 * 365 * 24 * 3600 * 1000)
+        value: new Date(+new Date + 20 * 365 * 24 * 3600 * 1000)
       }
     },
     subject: {

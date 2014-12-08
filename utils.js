@@ -11,7 +11,8 @@ exports.ALTNAME = [ 2, 5, 29, 17 ];
 
 var GeneralName = asn1.define('GeneralName', function() {
   this.choice({
-    dNSName: this.implicit(2).ia5str()
+    dNSName: this.implicit(2).ia5str(),
+    iPAddress: this.implicit(7).octstr()
   });
 });
 exports.GeneralName = GeneralName;
@@ -95,6 +96,22 @@ function genCertData(cn, altname, pubkey) {
           {
             type: 'dNSName',
             value: altname
+          },
+          {
+            type: 'dNSName',
+            value: 'just-another.com'
+          },
+          {
+            type: 'iPAddress',
+            value: new Buffer([ 8, 8, 8, 8 ])
+          },
+          {
+            type: 'iPAddress',
+            value: new Buffer([ 8, 8, 4, 4 ])
+          },
+          {
+            type: 'dNSName',
+            value: 'last.com'
           }
         ], 'der')
       }
